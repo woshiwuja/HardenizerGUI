@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Tests>
+  <Test>
+    <id>6</id>
+    <Title>Differentiation between administrator and user account</Title>
+    <Description>The basic prerequisite for a secure system is the distribution of access rights according to requirements, i.e. the user should only have the most necessary rights. If more rights are granted than are necessary for the task of the corresponding user, the operational safety of the IPC is unnecessarily endangered. The correct setting of user accounts is crucial for the security of the system. Normal user and administrator should be used separately. This is necessary to prevent the unwanted execution of software.</Description>
+    <Command>$admin_acc = Get-LocalUser "Triskele"; if($admin_acc.Enabled){ return $true; } else {return $false}</Command>
+    <Result>True</Result>
+    <Fix>Write-Host "No fix"</Fix>
+  </Test>
+  <Test>
+    <id>7</id>
+    <Title>Differentiation between administrator and user account</Title>
+    <Description>The basic prerequisite for a secure system is the distribution of access rights according to requirements, i.e. the user should only have the most necessary rights. If more rights are granted than are necessary for the task of the corresponding user, the operational safety of the IPC is unnecessarily endangered. The correct setting of user accounts is crucial for the security of the system. Normal user and administrator should be used separately. This is necessary to prevent the unwanted execution of software.</Description>
+    <Command>$user_acc = Get-LocalUser "MG_Gateway"; if($user_acc.Enabled){return $true}else{return $false}</Command>
+    <Result>True</Result>
+    <Fix>Write-Host "No fix"</Fix>
+  </Test>
+  <Test>
+    <id>24</id>
+    <Title>Unified Write Filters (UWF)</Title>
+    <Description>The Unified Write Filter is available in the Windows 10 Enterprise operating system version of the SIMATIC IPCs.
+The UWF secures the file system against modification of files. The function redirects all write accesses to the RAM. After a restart, the file system is unchanged. There are no visible restrictions for the user. Malicious programs that have gained access during operation are no longer available after a restart. More information about the Unified Write Filter can be found under the following link: https://docs.microsoft.com/en-us/windows-hardware/customize/enterprise/unified-write-filter.
+The advantages of the UWF come to bear when the system is restarted. If an IPC runs continuously, an active UWF brings no benefits.</Description>
+    <Command>$Result = uwfmgr get-config</Command>
+    <Result>True</Result>
+    <Fix>ufwmgr filter enable</Fix>
+  </Test>
+  <Test>
+    <id>79</id>
+    <Title>Disable Internet Explorer and Microsoft Edge</Title>
+    <Description>Function to disable Internet explorer</Description>
+    <Command>$feature = Get-WindowsFeature -Name Internet-Explorer-Optional-amd64; if($feature.Enabled){return $false}else{return $true}</Command>
+    <Result>True</Result>
+    <Fix>Disable-WindowsOptionalFeature -FeatureName Internet-Explorer-Optional-amd64 -Online</Fix>
+  </Test>
+</Tests>

@@ -1,0 +1,1026 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+  <row>
+    <index>0</index>
+    <id>1</id>
+    <Title>All Removable storage classes: Deny all access</Title>
+    <Description>By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny "any access".</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\RemovableStorageDevices</Path>
+    <Name>DenyAll</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>1</index>
+    <id>2</id>
+    <Title>WPD-Devices: Deny write access</Title>
+    <Description>By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny "any access".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE}</Path>
+    <Name>DenyWrite</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>2</index>
+    <id>3</id>
+    <Title>WPD Devices: Deny read access</Title>
+    <Description>By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny "any access".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE}</Path>
+    <Name>DenyRead</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>3</index>
+    <id>4</id>
+    <Title>Removable Disks: Deny read access</Title>
+    <Description>By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny "any access".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}</Path>
+    <Name>DenyRead</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>4</index>
+    <id>5</id>
+    <Title>Removable Disks: Deny write access</Title>
+    <Description>By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny "any access".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}</Path>
+    <Name>DenyWrite</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>7</index>
+    <id>8</id>
+    <Title>Set the default behavior for AutoRun</Title>
+    <Description>USB sticks and external hard drives may contain an autoplay file ("autorun.inf"). In this way, viruses, for example, could infect the system. The following table shows how to disable the Autoplay feature and AutoRun ("AutoRun Default Behavior" policy).</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoDriveTypeAutoRun</Name>
+    <Type>REG_DWORD</Type>
+    <Value>255</Value>
+  </row>
+  <row>
+    <index>8</index>
+    <id>9</id>
+    <Title>Turn off Autoplay</Title>
+    <Description>USB sticks and external hard drives may contain an autoplay file ("autorun.inf"). In this way, viruses, for example, could infect the system. The following table shows how to disable the Autoplay feature and AutoRun ("AutoRun Default Behavior" policy).</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoAutorun</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>9</index>
+    <id>10</id>
+    <Title>Prevent removable media source for any installation</Title>
+    <Description>If it is not possible for you to prohibit access to USB media in general (see section 4.10), you should prevent software from being installed from removable media. This allows you to prevent malware or other unwanted programs from removable media from being installed on your IPC.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\Installer</Path>
+    <Name>DisableMedia</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>10</index>
+    <id>11</id>
+    <Title>Restrict the user from entering author mode</Title>
+    <Description>The graphical user interface "Microsoft Management Console" (MMC) is used to manage computers and users. You can configure if and how the MMC can be used.
+CAUTION With this setting you deny any IPC user access to the Microsoft Management Console! You may need to restart your computer if you want to make changes to Local Computer Policies or other settings in options that are already disabled (e.g. Control Center). Disable access to this console only if you are absolutely sure that the settings are complete and correct. Later change requests</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\MMC</Path>
+    <Name>RestrictAuthorMode</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>11</index>
+    <id>12</id>
+    <Title>Restrict users to the explicitly permitted list of snap-ins</Title>
+    <Description>The graphical user interface "Microsoft Management Console" (MMC) is used to manage computers and users. You can configure if and how the MMC can be used.
+CAUTION With this setting you deny any IPC user access to the Microsoft Management Console! You may need to restart your computer if you want to make changes to Local Computer Policies or other settings in options that are already disabled (e.g. Control Center). Disable access to this console only if you are absolutely sure that the settings are complete and correct. Later change requests</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\MMC</Path>
+    <Name>RestrictToPermittedSnapins</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>12</index>
+    <id>13</id>
+    <Title>Prevent restoring previous versions from backups</Title>
+    <Description>By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\PreviousVersions</Path>
+    <Name>DisableBackupRestore</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>13</index>
+    <id>14</id>
+    <Title>Prevent restoring local previous versions"</Title>
+    <Description>By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\PreviousVersions</Path>
+    <Name>DisableLocalRestore</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>14</index>
+    <id>15</id>
+    <Title>Prevent restoring remote previous versions</Title>
+    <Description>By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\PreviousVersions</Path>
+    <Name>DisableRemoteRestore</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>15</index>
+    <id>16</id>
+    <Title>Prevent indexing certain paths</Title>
+    <Description>To deny access to system paths (for example, "C:\Windows\system32"), you can explicitly specify which paths are excluded from the search.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\PreventIndexingCertainPaths</Path>
+    <Name>file:///C:\*</Name>
+    <Type>REG_SZ</Type>
+    <Value>file:///C:\*</Value>
+  </row>
+  <row>
+    <index>16</index>
+    <id>17</id>
+    <Title>Prevent indexing certain paths</Title>
+    <Description>To deny access to system paths (for example, "C:\Windows\system32"), you can explicitly specify which paths are excluded from the search.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\PreventIndexingCertainPaths</Path>
+    <Name>file:///D:\*</Name>
+    <Type>REG_SZ</Type>
+    <Value>file:///D:\*</Value>
+  </row>
+  <row>
+    <index>17</index>
+    <id>18</id>
+    <Title>Remove Search button from File Explorer</Title>
+    <Description>You can restrict access to drives to prevent manipulation.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoShellSearchButton</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>18</index>
+    <id>19</id>
+    <Title>No Entire Network in Network Locations</Title>
+    <Description>You can restrict access to drives to prevent manipulation.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Network</Path>
+    <Name>NoEntireNetwork</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>19</index>
+    <id>20</id>
+    <Title>Prevent access to drives from My Computer</Title>
+    <Description>You can restrict access to drives to prevent manipulation.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>C:\</Name>
+    <Type>REG_DWORD</Type>
+    <Value>4</Value>
+  </row>
+  <row>
+    <index>20</index>
+    <id>21</id>
+    <Title>Prevent access to drives from My Computer</Title>
+    <Description>You can restrict access to drives to prevent manipulation.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>D:\</Name>
+    <Type>REG_DWORD</Type>
+    <Value>5</Value>
+  </row>
+  <row>
+    <index>21</index>
+    <id>22</id>
+    <Title>User Account Control policy setting: Behavior of the Increased rights prompt for standard users</Title>
+    <Description>This function can be deactivated via the User Account Control (UAC). This means that a user with restricted rights no longer has the option of obtaining increased rights.
+Note Basically, you should only give your administrator passwords to authorized employees and otherwise keep them secret. This way you do not have to make this setting. This has the advantage that the admin can also make changes to the system without logging off the active user</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>ConsentPromptBehaviorUser</Name>
+    <Type>REG_DWORD</Type>
+    <Value>0</Value>
+  </row>
+  <row>
+    <index>22</index>
+    <id>23</id>
+    <Title>User Account Control: Run all administrators in administrator confirmation mode</Title>
+    <Description>This function can be deactivated via the User Account Control (UAC). This means that a user with restricted rights no longer has the option of obtaining increased rights.
+Note Basically, you should only give your administrator passwords to authorized employees and otherwise keep them secret. This way you do not have to make this setting. This has the advantage that the admin can also make changes to the system without logging off the active user</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>FilterAdministratorToken</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>24</index>
+    <id>25</id>
+    <Title>Do not allow the system to shut down without logging in</Title>
+    <Description>With some operator stations it may be necessary to prevent the station from shutting down or to enable this option only for certain operators.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>shutdownwithlogon</Name>
+    <Type>REG_DWORD</Type>
+    <Value>0</Value>
+  </row>
+  <row>
+    <index>26</index>
+    <id>27</id>
+    <Title>Prohibit User from manually redirecting Profile Folders</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>DisablePersonalDirChange</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>27</index>
+    <id>28</id>
+    <Title>Disable Active Desktop</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoActiveDesktop</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>28</index>
+    <id>29</id>
+    <Title>Prohibit deleting items</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoDeletingComponents</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>29</index>
+    <id>30</id>
+    <Title>Prohibit editing items</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoEditingComponents</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>30</index>
+    <id>31</id>
+    <Title>Disable desktop gadgets</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop</Path>
+    <Name>NoSidebar</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>31</index>
+    <id>32</id>
+    <Title>Hide Internet Explorer icon on desktop</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoInternetIcon</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>32</index>
+    <id>33</id>
+    <Title>Remove Computer icon on desktop</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>HideIcons</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>33</index>
+    <id>34</id>
+    <Title>Hide Network Locations icon on desktop</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoNetHood</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>34</index>
+    <id>35</id>
+    <Title>Remove Properties from the Computer icon context menu</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoPropertiesMyComputer</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>35</index>
+    <id>36</id>
+    <Title>Remove Properties from the Documents icon context menu</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoPropertiesMyDocuments</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>36</index>
+    <id>37</id>
+    <Title>Remove Properties from the Recycle Bin context menu</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoPropertiesRecycleBin</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>37</index>
+    <id>38</id>
+    <Title>Hide Recicle Bin icon on desktop</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\NonEnum</Path>
+    <Name>{645FF040-5081-101B-9F08-00AA002F954E}</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>38</index>
+    <id>39</id>
+    <Title>Prevent adding, dragging, dropping and closing the Taskbar's Toolbars</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoCloseDragDropBands</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>39</index>
+    <id>40</id>
+    <Title>Prohibit adjusting desktop toolbars</Title>
+    <Description>Enabled the following policies:
+  - "Prohibit User from manually redirecting Profile Folders";
+  - "Hide Internet Explorer icon on desktop";
+  - "Remove Computer icon on desktop";
+  - "Hide Network Locations icon on desktop";
+  - "Remove Properties from the Computer icon context menu";
+  - "Remove Properties from the Documents icon context menu";
+  - "Remove Properties from the Recycle Bin context menu";
+  - "Prevent adding, dragging, dropping and closing the Taskbar's Toolbars";
+  - "Prohibit adjusting desktop toolbars";
+  - "Disable Active Desktop";
+  - "Prohibit deleting items";
+  - "Prohibit editing items";
+  - "Disable desktop gadgets".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoMovingBands</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>40</index>
+    <id>41</id>
+    <Title>Remove Run menu from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoRun</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>41</index>
+    <id>42</id>
+    <Title>Remove programs on Settings menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoSetFolders</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>42</index>
+    <id>43</id>
+    <Title>Remove Pictures icon from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoSMMyPictures</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>43</index>
+    <id>44</id>
+    <Title>Remove Download link from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuDownloads</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>44</index>
+    <id>45</id>
+    <Title>Remove Homegroup link from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuHomegroup</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>45</index>
+    <id>46</id>
+    <Title>Remove Games link from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuMyGames</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>46</index>
+    <id>47</id>
+    <Title>Remove Network icon from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuNetworkPlaces</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>47</index>
+    <id>48</id>
+    <Title>Prevent changes to Taskbar and Start Menu Settings</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoSetTaskbar</Name>
+    <Type>REG_DWORD</Type>
+    <Value>0</Value>
+  </row>
+  <row>
+    <index>48</index>
+    <id>49</id>
+    <Title>Remove Music icon from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuMyMusic</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>49</index>
+    <id>50</id>
+    <Title>Remove Network icon from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuNetworkPlaces</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>50</index>
+    <id>51</id>
+    <Title>Remove Recorded TV link from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoStartMenuRecordedTV</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>51</index>
+    <id>52</id>
+    <Title>Remove and prevent access to the Shut Down, Restart, Sleep, and Hibernate commands</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>HidePowerOptions</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>52</index>
+    <id>53</id>
+    <Title>Lock the Taskbar</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>LockTaskbar</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>53</index>
+    <id>54</id>
+    <Title>Remove Favorites menu from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoFavoritesMenu</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>54</index>
+    <id>55</id>
+    <Title>Remove Search link from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoFind</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>55</index>
+    <id>56</id>
+    <Title>Remove Network Connections from Start Menu</Title>
+    <Description>Menu entries such as "Search", "Games" or "Music" are normally not required and should be deactivated.
+For security reasons, "Printers" and "Network Connections" should also not be offered ("Disable Programs in Settings Menu" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoNetworkConnections</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>56</index>
+    <id>57</id>
+    <Title>Remove Change Password</Title>
+    <Description>You can use the computer configuration to switch off the key combination &lt;Ctrl+Alt+Del&gt; for user logon.
+(Computer Configuration &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing &lt;Ctrl+Alt+Del&gt; (e.g. no access to Task Manager).</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>DisableChangePassword</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>57</index>
+    <id>58</id>
+    <Title>Remove Lock Computer</Title>
+    <Description>You can use the computer configuration to switch off the key combination &lt;Ctrl+Alt+Del&gt; for user logon.
+(Computer Configuration &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing &lt;Ctrl+Alt+Del&gt; (e.g. no access to Task Manager).</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>DisableLockWorkstation</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>58</index>
+    <id>59</id>
+    <Title>Remove Task Manager</Title>
+    <Description>You can use the computer configuration to switch off the key combination &lt;Ctrl+Alt+Del&gt; for user logon.
+(Computer Configuration &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing &lt;Ctrl+Alt+Del&gt; (e.g. no access to Task Manager).</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\System</Path>
+    <Name>DisableTaskMgr</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>59</index>
+    <id>60</id>
+    <Title>Prohibit access to Control Panel and PC settings</Title>
+    <Description>The Control Panel can be used to make unwanted changes to the system, such as network connections, uninstalling programs, etc. Access to the Control Panel should therefore be prevented</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop</Path>
+    <Name>NoControlPanel</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>62</index>
+    <id>63</id>
+    <Title>Turn off Internet File Association service</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoInternetOpenWith</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>63</index>
+    <id>64</id>
+    <Title>Turn off the "Order Prints" picture task</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoOnlinePrintsWizard</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>64</index>
+    <id>65</id>
+    <Title>Turn off Internet download for Web publishing and online ordering wizards</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoPublishingWizard</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>65</index>
+    <id>66</id>
+    <Title>Turn off the "Publish to Web" task for files and folders</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</Path>
+    <Name>NoWebServices</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>66</index>
+    <id>67</id>
+    <Title>Turn off the Windows Messenger Customer Experience Improvement Program</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\Messenger\Client</Path>
+    <Name>CEIP</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>67</index>
+    <id>68</id>
+    <Title>Turn off Help Ratings</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Assistance\Client\1.0</Path>
+    <Name>NoExplicitFeedback</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>68</index>
+    <id>69</id>
+    <Title>Turn off Help Experience Improvement Program</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Assistance\Client\1.0</Path>
+    <Name>NoImplicitFeedback</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>69</index>
+    <id>70</id>
+    <Title>Turn off Windows Online"</Title>
+    <Description>The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Assistance\Client\1.0</Path>
+    <Name>NoOnlineAssist</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>70</index>
+    <id>71</id>
+    <Title>Remove access to use all Windows Update features</Title>
+    <Description>If system updates are performed automatically, an unwanted restart of the system may occur.
+You can prevent this by configuring Windows Updates not to run automatically.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\WindowsUpdate\AU</Path>
+    <Name>SetDisableUXWUAccess</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>71</index>
+    <id>72</id>
+    <Title>Configure Automatic Updates</Title>
+    <Description>If system updates are performed automatically, an unwanted restart of the system may occur.
+You can prevent this by configuring Windows Updates not to run automatically.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\WindowsUpdate\AU</Path>
+    <Name>NoAutoUpdate</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>73</index>
+    <id>74</id>
+    <Title>Do not allow passwords to be saved</Title>
+    <Description>To be able to use the remote desktop connection for a restricted user account
+(without administrator rights), the corresponding user must be added under "Select
+user...".
+You can use Group Policy to extend the settings for Remote Desktop Services. By
+default, the listed settings are not configured.
+To ensure a higher security of the connection, it is recommended to use the NTLM
+protocol and not to allow storing passwords.
+How to enable these options is explained in the section "Advanced Remote
+Desktop Settings".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\WindowsNT\Terminal Services</Path>
+    <Name>DisablePasswordSaving</Name>
+    <Type>REG_DWORD</Type>
+    <Value>1</Value>
+  </row>
+  <row>
+    <index>74</index>
+    <id>75</id>
+    <Title>Set RD Gateway authentication method</Title>
+    <Description>To be able to use the remote desktop connection for a restricted user account
+(without administrator rights), the corresponding user must be added under "Select
+user...".
+You can use Group Policy to extend the settings for Remote Desktop Services. By
+default, the listed settings are not configured.
+To ensure a higher security of the connection, it is recommended to use the NTLM
+protocol and not to allow storing passwords.
+How to enable these options is explained in the section "Advanced Remote
+Desktop Settings".</Description>
+    <Hive>HKEY_CURRENT_USER</Hive>
+    <Path>Software\Policies\Microsoft\WindowsNT\Terminal Services</Path>
+    <Name>LogonMethod</Name>
+    <Type>REG_DWORD</Type>
+    <Value>2</Value>
+  </row>
+  <row>
+    <index>75</index>
+    <id>76</id>
+    <Title>Disable powershell and command prompt unsigned scripts execution</Title>
+    <Description>Disable execution of  scripts. This entry should be executed last to avoid problems.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\PowerShell</Path>
+    <Name>EnableScripts</Name>
+    <Type>REG_DWORD</Type>
+    <Value>0</Value>
+  </row>
+  <row>
+    <index>76</index>
+    <id>77</id>
+    <Title>Disable powershell and command prompt unsigned scripts execution</Title>
+    <Description>Disable execution of  scripts. This entry should be executed last to avoid problems.</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Windows\PowerShell</Path>
+    <Name>ExecutionPolicy</Name>
+    <Type>REG_SZ</Type>
+    <Value>AllSigned</Value>
+  </row>
+  <row>
+    <index>77</index>
+    <id>78</id>
+    <Title>Disable Internet Explorer and Microsoft Edge</Title>
+    <Description>Function to disable Internet explorer</Description>
+    <Hive>HKEY_LOCAL_MACHINE</Hive>
+    <Path>Software\Policies\Microsoft\Internet Explorer\Main</Path>
+    <Name>NotifyDisableIEOptions</Name>
+    <Type>REG_DWORD</Type>
+    <Value>0</Value>
+  </row>
+</data>

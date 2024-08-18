@@ -1,0 +1,343 @@
+id;Section;Section Title;Title;Description;Impact;Rationale;Remediation;Hive;Path;Name;Type;Value;Command;Result;Fix;Policy Aggiuntive MG;Note
+1;4.1;Configure removable disk access;All Removable storage classes: Deny all access;"By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny ""any access"".";Infect IPC with malware, unwanted installation of programs; Access to removable media (e.g. USB sticks);Preventing access to removable media;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\RemovableStorageDevices;DenyAll;REG_DWORD;1;;;;;
+2;4.1;Configure removable disk access;WPD-Devices: Deny write access;"By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny ""any access"".";Infect IPC with malware, unwanted installation of programs; Access to removable media (e.g. USB sticks);Preventing access to removable media;HKEY_CURRENT_USER;Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE};DenyWrite;REG_DWORD;1;;;;;
+3;4.1;Configure removable disk access;WPD Devices: Deny read access;"By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny ""any access"".";Infect IPC with malware, unwanted installation of programs; Access to removable media (e.g. USB sticks);Preventing access to removable media;HKEY_CURRENT_USER;Software\Policies\Microsoft\Windows\RemovableStorageDevices\{F33FDC04-D1AC-4E8E-9A30-19BBD4B108AE};DenyRead;REG_DWORD;1;;;;;
+4;4.1;Configure removable disk access;Removable Disks: Deny read access;"By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny ""any access"".";Infect IPC with malware, unwanted installation of programs; Access to removable media (e.g. USB sticks);Preventing access to removable media;HKEY_CURRENT_USER;Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b};DenyRead;REG_DWORD;1;;;;;
+5;4.1;Configure removable disk access;Removable Disks: Deny write access;"By inserting a USB stick, the IPC can be infected with a malicious program. Therefore, it is recommended to deny access to various removable disks in the Group Policy settings. It is possible to either deny read and/or write access or to deny ""any access"".";Infect IPC with malware, unwanted installation of programs; Access to removable media (e.g. USB sticks);Preventing access to removable media;HKEY_CURRENT_USER;Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b};DenyWrite;REG_DWORD;1;;;;;
+6;4.1;User accounts and their rights;Differentiation between administrator and user account;The basic prerequisite for a secure system is the distribution of access rights according to requirements, i.e. the user should only have the most necessary rights. If more rights are granted than are necessary for the task of the corresponding user, the operational safety of the IPC is unnecessarily endangered. The correct setting of user accounts is crucial for the security of the system. Normal user and administrator should be used separately. This is necessary to prevent the unwanted execution of software.;Unauthorized modification of system parameters;Only one administrator account exists;Operation of the SIMATIC software as a user with restricted rights;;;;;;"$admin_acc = Get-LocalUser ""Triskele""; if($admin_acc.Enabled){ return $true; } else {return $false}";True;"Write-Host ""No fix""";;
+7;4.1;User accounts and their rights;Differentiation between administrator and user account;The basic prerequisite for a secure system is the distribution of access rights according to requirements, i.e. the user should only have the most necessary rights. If more rights are granted than are necessary for the task of the corresponding user, the operational safety of the IPC is unnecessarily endangered. The correct setting of user accounts is crucial for the security of the system. Normal user and administrator should be used separately. This is necessary to prevent the unwanted execution of software.;Unauthorized modification of system parameters;Only one administrator account exists;Operation of the SIMATIC software as a user with restricted rights;;;;;;"$user_acc = Get-LocalUser ""MG_Gateway""; if($user_acc.Enabled){return $true}else{return $false}";True;"Write-Host ""No fix""";;
+8;4.11;Disable Autoplay function;Set the default behavior for AutoRun;"USB sticks and external hard drives may contain an autoplay file (""autorun.inf""). In this way, viruses, for example, could infect the system. The following table shows how to disable the Autoplay feature and AutoRun (""AutoRun Default Behavior"" policy).";Infect IPC with malware, unwanted installation of programs;Automatic execution of software (Autoplay function);Deactivating Autoplay or Autorun;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoDriveTypeAutoRun;REG_DWORD;255;;;;;
+9;4.11;Disable Autoplay function;Turn off Autoplay;"USB sticks and external hard drives may contain an autoplay file (""autorun.inf""). In this way, viruses, for example, could infect the system. The following table shows how to disable the Autoplay feature and AutoRun (""AutoRun Default Behavior"" policy).";Infect IPC with malware, unwanted installation of programs;Automatic execution of software (Autoplay function);Deactivating Autoplay or Autorun;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoAutorun;REG_DWORD;1;;;;;
+10;4.12;Prevent removable disk access for all installations;Prevent removable media source for any installation;If it is not possible for you to prohibit access to USB media in general (see section 4.10), you should prevent software from being installed from removable media. This allows you to prevent malware or other unwanted programs from removable media from being installed on your IPC.;Infect IPC with malware, unwanted installation of programs;Installations of removable media;Disable removable disk installation;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\Installer;DisableMedia;REG_DWORD;1;;;;;
+11;4.13;Deny access to Microsoft Management Console;Restrict the user from entering author mode;"The graphical user interface ""Microsoft Management Console"" (MMC) is used to manage computers and users. You can configure if and how the MMC can be used.
+CAUTION With this setting you deny any IPC user access to the Microsoft Management Console! You may need to restart your computer if you want to make changes to Local Computer Policies or other settings in options that are already disabled (e.g. Control Center). Disable access to this console only if you are absolutely sure that the settings are complete and correct. Later change requests";Change system configuration (group policies, firewall settings, etc.);Access to MMC (Microsoft Management Console);Deny access to MMC (Microsoft Management Console;HKEY_CURRENT_USER;Software\Policies\Microsoft\MMC;RestrictAuthorMode;REG_DWORD;1;;;;;
+12;4.13;Deny access to Microsoft Management Console;Restrict users to the explicitly permitted list of snap-ins;"The graphical user interface ""Microsoft Management Console"" (MMC) is used to manage computers and users. You can configure if and how the MMC can be used.
+CAUTION With this setting you deny any IPC user access to the Microsoft Management Console! You may need to restart your computer if you want to make changes to Local Computer Policies or other settings in options that are already disabled (e.g. Control Center). Disable access to this console only if you are absolutely sure that the settings are complete and correct. Later change requests";Change system configuration (group policies, firewall settings, etc.);Access to MMC (Microsoft Management Console);Deny access to MMC (Microsoft Management Console;HKEY_CURRENT_USER;Software\Policies\Microsoft\MMC;RestrictToPermittedSnapins;REG_DWORD;1;;;;;
+13;4.14;Deny access to recovery options;Prevent restoring previous versions from backups;By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.;Unwanted system changes;Access to recovery options;Restricting recovery options;HKEY_LOCAL_MACHINE;Software\Microsoft\PreviousVersions;DisableBackupRestore;REG_DWORD;1;;;;;
+14;4.14;Deny access to recovery options;"Prevent restoring local previous versions""";By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.;Unwanted system changes;Access to recovery options;Restricting recovery options;HKEY_LOCAL_MACHINE;Software\Microsoft\PreviousVersions;DisableLocalRestore;REG_DWORD;1;;;;;
+15;4.14;Deny access to recovery options;Prevent restoring remote previous versions;By disabling the recovery options of the operating system, it is no longer possible to return to previous states of the operating system. This prevents users from undoing changes to the system.;Unwanted system changes;Access to recovery options;Restricting recovery options;HKEY_LOCAL_MACHINE;Software\Microsoft\PreviousVersions;DisableRemoteRestore;REG_DWORD;1;;;;;
+16;4.15;Deny access to paths when searching;Prevent indexing certain paths;"To deny access to system paths (for example, ""C:\Windows\system32""), you can explicitly specify which paths are excluded from the search.";Unwanted access to applications;Access to paths when searching;Deny access to paths when searching;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\PreventIndexingCertainPaths;file:///C:\*;REG_SZ;file:///C:\*;;;;;
+17;4.15;Deny access to paths when searching;Prevent indexing certain paths;"To deny access to system paths (for example, ""C:\Windows\system32""), you can explicitly specify which paths are excluded from the search.";Unwanted access to applications;Access to paths when searching;Deny access to paths when searching;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\PreventIndexingCertainPaths;file:///D:\*;REG_SZ;file:///D:\*;;;;;
+18;4.16;Deny access to certain or all drives;Remove Search button from File Explorer;You can restrict access to drives to prevent manipulation.;Unauthorized access to system-relevant information, manipulation possibilities;Installations of removable media;Restrict access to network and specific drives;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoShellSearchButton;REG_DWORD;1;;;;;
+19;4.16;Deny access to certain or all drives;No Entire Network in Network Locations;You can restrict access to drives to prevent manipulation.;Unauthorized access to system-relevant information, manipulation possibilities;Installations of removable media;Restrict access to network and specific drives;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Network;NoEntireNetwork;REG_DWORD;1;;;;;
+20;4.16;Deny access to certain or all drives;Prevent access to drives from My Computer;You can restrict access to drives to prevent manipulation.;Unauthorized access to system-relevant information, manipulation possibilities;Installations of removable media;Restrict access to network and specific drives;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;C:\;REG_DWORD;4;;;;;
+21;4.16;Deny access to certain or all drives;Prevent access to drives from My Computer;You can restrict access to drives to prevent manipulation.;Unauthorized access to system-relevant information, manipulation possibilities;Installations of removable media;Restrict access to network and specific drives;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;D:\;REG_DWORD;5;;;;;
+22;4.2;Detect application installation and request elevated rights with User Account Control (UAC);User Account Control policy setting: Behavior of the Increased rights prompt for standard users;"This function can be deactivated via the User Account Control (UAC). This means that a user with restricted rights no longer has the option of obtaining increased rights.
+Note Basically, you should only give your administrator passwords to authorized employees and otherwise keep them secret. This way you do not have to make this setting. This has the advantage that the admin can also make changes to the system without logging off the active user";Employees with user rights can install any programs they like;Application installation also possible by user;Deactivation of the password query for administrator rights;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;ConsentPromptBehaviorUser;REG_DWORD;0;;;;;
+23;4.2;Detect application installation and request elevated rights with User Account Control (UAC);User Account Control: Run all administrators in administrator confirmation mode;"This function can be deactivated via the User Account Control (UAC). This means that a user with restricted rights no longer has the option of obtaining increased rights.
+Note Basically, you should only give your administrator passwords to authorized employees and otherwise keep them secret. This way you do not have to make this setting. This has the advantage that the admin can also make changes to the system without logging off the active user";Employees with user rights can install any programs they like;Application installation also possible by user;Deactivation of the password query for administrator rights;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;FilterAdministratorToken;REG_DWORD;1;;;;;
+24;4.3;Unified Write Filters (UWF);Unified Write Filters (UWF);"The Unified Write Filter is available in the Windows 10 Enterprise operating system version of the SIMATIC IPCs.
+The UWF secures the file system against modification of files. The function redirects all write accesses to the RAM. After a restart, the file system is unchanged. There are no visible restrictions for the user. Malicious programs that have gained access during operation are no longer available after a restart. More information about the Unified Write Filter can be found under the following link: https://docs.microsoft.com/en-us/windows-hardware/customize/enterprise/unified-write-filter.
+The advantages of the UWF come to bear when the system is restarted. If an IPC runs continuously, an active UWF brings no benefits.";Changes to the system;System files can be manipulated;The UWF allows changes to system files only in RAM.;;;;;;$Result = uwfmgr get-config;True;ufwmgr filter enable;;
+25;4.4;Do not allow the system to shut down without logging in;Do not allow the system to shut down without logging in;With some operator stations it may be necessary to prevent the station from shutting down or to enable this option only for certain operators.;Process stop possible;Shutdown option freely accessible;Shutdown only possible after user login;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;shutdownwithlogon;REG_DWORD;0;;;;;
+26;4.5;Software Restriction Guidelines - AppLocker;Software Restriction Guidelines - AppLocker;"Access to software should only be granted to the extent required and desired. This prevents the misuse and in particular the installation of malware. The AppLocker application responsible for this is not available on all Windows variants. (Table 4-2).
+This software may restrict access to software packages. AppLocker allows/prevents the execution of the following application types:
+Executable files (""*.exe"" and ""*.com"")
+Scripts (""*.js"", ""*.ps1"", ""*.vbs"", ""*.cmd"" and ""*.bat"")
+Windows Installer files (""*.msi"" and ""*.msp"")
+DLL files (""*.dll"" and ""*.ocx"")";Unauthorized execution of software;Running any malicious software;Access control to software through AppLocker;;;;;;;;;;Da capire come effettuare la configurazione https://learn.microsoft.com/en-us/windows/security/application-security/application-control/windows-defender-application-control/applocker/use-the-applocker-windows-powershell-cmdlets
+27;4.6;Configuring Desktop Policies and Restrictions;Prohibit User from manually redirecting Profile Folders;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;DisablePersonalDirChange;REG_DWORD;1;;;;;
+28;4.6;Configuring Desktop Policies and Restrictions;Disable Active Desktop;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoActiveDesktop;REG_DWORD;1;;;;;
+29;4.6;Configuring Desktop Policies and Restrictions;Prohibit deleting items;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoDeletingComponents;REG_DWORD;1;;;;;
+30;4.6;Configuring Desktop Policies and Restrictions;Prohibit editing items;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoEditingComponents;REG_DWORD;1;;;;;
+31;4.6;Configuring Desktop Policies and Restrictions;Disable desktop gadgets;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop;NoSidebar;REG_DWORD;1;;;;;
+32;4.6;Configuring Desktop Policies and Restrictions;Hide Internet Explorer icon on desktop;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoInternetIcon;REG_DWORD;1;;;;;
+33;4.6;Configuring Desktop Policies and Restrictions;Remove Computer icon on desktop;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;HideIcons;REG_DWORD;1;;;;;
+34;4.6;Configuring Desktop Policies and Restrictions;Hide Network Locations icon on desktop;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoNetHood;REG_DWORD;1;;;;;
+35;4.6;Configuring Desktop Policies and Restrictions;Remove Properties from the Computer icon context menu;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoPropertiesMyComputer;REG_DWORD;1;;;;;
+36;4.6;Configuring Desktop Policies and Restrictions;Remove Properties from the Documents icon context menu;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoPropertiesMyDocuments;REG_DWORD;1;;;;;
+37;4.6;Configuring Desktop Policies and Restrictions;Remove Properties from the Recycle Bin context menu;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoPropertiesRecycleBin;REG_DWORD;1;;;;;
+38;4.6;Configuring Desktop Policies and Restrictions;Hide Recicle Bin icon on desktop;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\NonEnum;{645FF040-5081-101B-9F08-00AA002F954E};REG_DWORD;1;;;;;
+39;4.6;Configuring Desktop Policies and Restrictions;Prevent adding, dragging, dropping and closing the Taskbar's Toolbars;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoCloseDragDropBands;REG_DWORD;1;;;;;
+40;4.6;Configuring Desktop Policies and Restrictions;Prohibit adjusting desktop toolbars;"Enabled the following policies:
+  - ""Prohibit User from manually redirecting Profile Folders"";
+  - ""Hide Internet Explorer icon on desktop"";
+  - ""Remove Computer icon on desktop"";
+  - ""Hide Network Locations icon on desktop"";
+  - ""Remove Properties from the Computer icon context menu"";
+  - ""Remove Properties from the Documents icon context menu"";
+  - ""Remove Properties from the Recycle Bin context menu"";
+  - ""Prevent adding, dragging, dropping and closing the Taskbar's Toolbars"";
+  - ""Prohibit adjusting desktop toolbars"";
+  - ""Disable Active Desktop"";
+  - ""Prohibit deleting items"";
+  - ""Prohibit editing items"";
+  - ""Disable desktop gadgets"".";Modification of system data, access to Internet Explorer, workstation, network environment;Desktop - Access to applications;Prevent Windows applications and their properties from being accessed from the desktop.;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoMovingBands;REG_DWORD;1;;;;;
+41;4.7;Start Menu and Taskbar - Configuring Policies;Remove Run menu from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoRun;REG_DWORD;1;;;;;
+42;4.7;Start Menu and Taskbar - Configuring Policies;Remove programs on Settings menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoSetFolders;REG_DWORD;1;;;;;
+43;4.7;Start Menu and Taskbar - Configuring Policies;Remove Pictures icon from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoSMMyPictures;REG_DWORD;1;;;;;
+44;4.7;Start Menu and Taskbar - Configuring Policies;Remove Download link from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuDownloads;REG_DWORD;1;;;;;
+45;4.7;Start Menu and Taskbar - Configuring Policies;Remove Homegroup link from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuHomegroup;REG_DWORD;1;;;;;
+46;4.7;Start Menu and Taskbar - Configuring Policies;Remove Games link from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuMyGames;REG_DWORD;1;;;;;
+47;4.7;Start Menu and Taskbar - Configuring Policies;Remove Network icon from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuNetworkPlaces;REG_DWORD;1;;;;;
+48;4.7;Start Menu and Taskbar - Configuring Policies;Prevent changes to Taskbar and Start Menu Settings;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoSetTaskbar;REG_DWORD;0;;;;;
+49;4.7;Start Menu and Taskbar - Configuring Policies;Remove Music icon from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuMyMusic;REG_DWORD;1;;;;;
+50;4.7;Start Menu and Taskbar - Configuring Policies;Remove Network icon from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuNetworkPlaces;REG_DWORD;1;;;;;
+51;4.7;Start Menu and Taskbar - Configuring Policies;Remove Recorded TV link from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoStartMenuRecordedTV;REG_DWORD;1;;;;;
+52;4.7;Start Menu and Taskbar - Configuring Policies;Remove and prevent access to the Shut Down, Restart, Sleep, and Hibernate commands;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;HidePowerOptions;REG_DWORD;1;;;;;
+53;4.7;Start Menu and Taskbar - Configuring Policies;Lock the Taskbar;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;LockTaskbar;REG_DWORD;1;;;;;
+54;4.7;Start Menu and Taskbar - Configuring Policies;Remove Favorites menu from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoFavoritesMenu;REG_DWORD;1;;;;;
+55;4.7;Start Menu and Taskbar - Configuring Policies;Remove Search link from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoFind;REG_DWORD;1;;;;;
+56;4.7;Start Menu and Taskbar - Configuring Policies;Remove Network Connections from Start Menu;"Menu entries such as ""Search"", ""Games"" or ""Music"" are normally not required and should be deactivated.
+For security reasons, ""Printers"" and ""Network Connections"" should also not be offered (""Disable Programs in Settings Menu"" policy).
+Please note that some policies only deny access to the menu items. Some of the functions can be reached in other ways (e.g. under C:\Windows\system32).";Change of system data/network environment, IPC lock/shutdown;Start menu and taskbar - access to applications;Preventing access to Windows applications from the Start menu;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoNetworkConnections;REG_DWORD;1;;;;;
+57;4.8;Strg+Alt+Del configuring;Remove Change Password;"You can use the computer configuration to switch off the key combination <Ctrl+Alt+Del> for user logon.
+(Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing <Ctrl+Alt+Del> (e.g. no access to Task Manager).";"Processes and services can be stopped, incorrect configuration of the IPCs
+ ";Change password, Lock IPC, Access Task Manager;Restriction of functions according to Ctrl+Alt+Del;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;DisableChangePassword;REG_DWORD;1;;;;;
+58;4.8;Strg+Alt+Del configuring;Remove Lock Computer;"You can use the computer configuration to switch off the key combination <Ctrl+Alt+Del> for user logon.
+(Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing <Ctrl+Alt+Del> (e.g. no access to Task Manager).";"Processes and services can be stopped, incorrect configuration of the IPCs
+ ";Change password, Lock IPC, Access Task Manager;Restriction of functions according to Ctrl+Alt+Del;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;DisableLockWorkstation;REG_DWORD;1;;;;;
+59;4.8;Strg+Alt+Del configuring;Remove Task Manager;"You can use the computer configuration to switch off the key combination <Ctrl+Alt+Del> for user logon.
+(Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Interactive Login: No STRG + ALT + ENTF required).
+Alternatively, you can use the user configuration to set which actions are possible when pressing <Ctrl+Alt+Del> (e.g. no access to Task Manager).";"Processes and services can be stopped, incorrect configuration of the IPCs
+ ";Change password, Lock IPC, Access Task Manager;Restriction of functions according to Ctrl+Alt+Del;HKEY_LOCAL_MACHINE;Software\Microsoft\Windows\CurrentVersion\Policies\System;DisableTaskMgr;REG_DWORD;1;;;;;
+60;4.9;Prevent access to Control Panel;Prohibit access to Control Panel and PC settings;The Control Panel can be used to make unwanted changes to the system, such as network connections, uninstalling programs, etc. Access to the Control Panel should therefore be prevented;Processes and services can be stopped, incorrect configuration of the IPCs; Changing the System Parameters in Control Panel;Prevent access to Control Panel;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop;NoControlPanel;REG_DWORD;1;;;;;
+61;5.1;Enable and configure Windows Firewall;Firewall;"It is strongly recommended to leave the Windows Firewall enabled! The standard
+configuration is configured in a meaningful way.
+If Siemens software requires additional settings, these are configured during the
+installation (for example during the installation of SIMATIC NET).
+During commissioning, it may make sense to temporarily allow ping requirements.";Sensitive process data can be viewed;Windows Firewall switched off / not configured;Enable and configure Windows Firewall;;;;;;;;;Firewall windows disattivato per non interferire con Il gateway.;
+62;5.2;Configure password policies correctly;Passwords;"By configuring the password policies, the user is ""forced"" to follow the appropriate rules for assigning his password. These guidelines counter misuse.";Hacker attacks by online scanners, unauthorized accesses;Use default passwords;Configure password policies correctly;;;;;;;;;;Complexity: Enabled. History Disabled. Store Disable. Max Age: Non impostato. Min Length 16 Min Age 0 days
+63;5.4;Restricting Internet Access;Turn off Internet File Association service;The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoInternetOpenWith;REG_DWORD;1;;;;;
+64;5.4;Restricting Internet Access;"Turn off the ""Order Prints"" picture task";The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoOnlinePrintsWizard;REG_DWORD;1;;;;;
+65;5.4;Restricting Internet Access;Turn off Internet download for Web publishing and online ordering wizards;The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoPublishingWizard;REG_DWORD;1;;;;;
+66;5.4;Restricting Internet Access;"Turn off the ""Publish to Web"" task for files and folders";The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_CURRENT_USER;Software\Microsoft\Windows\CurrentVersion\Policies\Explorer;NoWebServices;REG_DWORD;1;;;;;
+67;5.4;Restricting Internet Access;Turn off the Windows Messenger Customer Experience Improvement Program;The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_CURRENT_USER;Software\Policies\Microsoft\Messenger\Client;CEIP;REG_DWORD;1;;;;;
+68;5.4;Restricting Internet Access;Turn off Help Ratings;The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Assistance\Client\1.0;NoExplicitFeedback;REG_DWORD;1;;;;;
+69;5.4;Restricting Internet Access;Turn off Help Experience Improvement Program;The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Assistance\Client\1.0;NoImplicitFeedback;REG_DWORD;1;;;;;
+70;5.4;Restricting Internet Access;"Turn off Windows Online""";The denial of Internet access limits the possibilities for unwanted installation of malware on the IPC.;Free access to the Internet;Free access to Internet communication management;Restricting Internet Access;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Assistance\Client\1.0;NoOnlineAssist;REG_DWORD;1;;;;;
+71;5.5;Automatic installation of Windows updates;Remove access to use all Windows Update features;"If system updates are performed automatically, an unwanted restart of the system may occur.
+You can prevent this by configuring Windows Updates not to run automatically.";Process stop possible;Spontaneous restart by update;Prevent/control automatic Windows updates;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\WindowsUpdate\AU;SetDisableUXWUAccess;REG_DWORD;1;;;;;
+72;5.5;Automatic installation of Windows updates;Configure Automatic Updates;"If system updates are performed automatically, an unwanted restart of the system may occur.
+You can prevent this by configuring Windows Updates not to run automatically.";Process stop possible;Spontaneous restart by update;Prevent/control automatic Windows updates;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\WindowsUpdate\AU;NoAutoUpdate;REG_DWORD;1;;;;;
+73;5.6;Tunneling connection with IPSec (VPN IPSec);Tunneling connection with IPSec (VPN IPSec);"With a Virtual Private Network (VPN), a public network (e.g. Internet) is used as a
+transit network for the transmission of private data.
+The IPSec protocol enables manufacturer-independent, secure and protected data
+exchange via IP networks. IPSec uses the tunneling concept. The data
+transmission between the tunnel endpoints (sender and receiver) cannot be viewed
+by unauthorized persons due to the encryption.
+IPSec is part of the Windows installation. To use VPN with IPSec, it is necessary to
+adjust the IPSec tunnel authorization.";Unsafe connection - sensitive process data can be viewed;Remote maintenance via VPN is configured insecurely;Using a Virtual Private Network (VPN) that is configured correctly;;;;;;;;;;
+74;5.7;Useful Configuration for Remote Desktop;Do not allow passwords to be saved;"To be able to use the remote desktop connection for a restricted user account
+(without administrator rights), the corresponding user must be added under ""Select
+user..."".
+You can use Group Policy to extend the settings for Remote Desktop Services. By
+default, the listed settings are not configured.
+To ensure a higher security of the connection, it is recommended to use the NTLM
+protocol and not to allow storing passwords.
+How to enable these options is explained in the section ""Advanced Remote
+Desktop Settings"".";Invalid access rights;Unsecure remote desktop connection;Safe configuration of the remote desktop;HKEY_CURRENT_USER;Software\Policies\Microsoft\WindowsNT\Terminal Services;DisablePasswordSaving;REG_DWORD;1;;;;;
+75;5.7;Useful Configuration for Remote Desktop;Set RD Gateway authentication method;"To be able to use the remote desktop connection for a restricted user account
+(without administrator rights), the corresponding user must be added under ""Select
+user..."".
+You can use Group Policy to extend the settings for Remote Desktop Services. By
+default, the listed settings are not configured.
+To ensure a higher security of the connection, it is recommended to use the NTLM
+protocol and not to allow storing passwords.
+How to enable these options is explained in the section ""Advanced Remote
+Desktop Settings"".";Invalid access rights;Unsecure remote desktop connection;Safe configuration of the remote desktop;HKEY_CURRENT_USER;Software\Policies\Microsoft\WindowsNT\Terminal Services;LogonMethod;REG_DWORD;2;;;;;
+76;7;Additional Configuration;Disable powershell and command prompt unsigned scripts execution;Disable execution of  scripts. This entry should be executed last to avoid problems.;;;;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\PowerShell;EnableScripts;REG_DWORD;0;;;;;
+77;7;Additional Configuration;Disable powershell and command prompt unsigned scripts execution;Disable execution of  scripts. This entry should be executed last to avoid problems.;;;;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Windows\PowerShell;ExecutionPolicy;REG_SZ;AllSigned;;;;;
+78;7;Additional Configuration;Disable Internet Explorer and Microsoft Edge;Function to disable Internet explorer;;;;HKEY_LOCAL_MACHINE;Software\Policies\Microsoft\Internet Explorer\Main;NotifyDisableIEOptions;REG_DWORD;0;;;;;
+79;7;Additional Configuration;Disable Internet Explorer and Microsoft Edge;Function to disable Internet explorer;;;;;;;;;"$feature = Get-WindowsFeature -Name Internet-Explorer-Optional-amd64; if($feature.Enabled){return $false}else{return $true}";True;Disable-WindowsOptionalFeature -FeatureName Internet-Explorer-Optional-amd64 -Online;;

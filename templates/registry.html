@@ -1,0 +1,68 @@
+<script>
+    function edit() {
+        const d = document.getElementById('desc')
+        const l = document.querySelectorAll('input')
+        for (i = 0; i < l.length; i++) {
+            if (l[i].readOnly == true) {
+                l[i].removeAttribute('readonly')
+                d.removeAttribute('readonly')
+            } else {
+                l[i].setAttribute('readonly', true)
+                d.setAttribute('readonly', true)
+            }
+        }
+    }
+</script>
+<div class="entry_title">{{registry_dataframe.iloc[0].Title}}</div>
+<div>
+    <h2>Description</h2>
+    <textarea rows="10" id="desc" cols="120" placeholder="Hello" readonly
+        style="resize: none;">{{registry_dataframe.iloc[0].Description}}</textarea>
+</div>
+<div class="audit_info">
+    <div id="regkey_info" class="regkey_info">
+        <h2>Audit ID:{{registry_dataframe.iloc[0].id}}</h2>
+        <label for="hive">Hive</label>
+        <input type="text" style="margin-bottom: 1%;" placeholder="HKEY_CURRENT_USER" name="hive"
+            value="{{registry_dataframe.iloc[0].Hive}}" readonly />
+        <label for="path">Path</label>
+        <input type="text" style="margin-bottom: 1%;" placeholder="Microsoft\Software" name="path"
+            value="{{registry_dataframe.iloc[0].Path}}" readonly />
+        <label for="name">Name</label>
+        <input type="text" style="margin-bottom: 1%;" placeholder="noshutdown" name="name"
+            value="{{registry_dataframe.iloc[0].Name}}" readonly />
+        <label for="type">Type</label>
+        <input type="text" style="margin-bottom: 1%;" placeholder="REG_DWORD" name="type"
+            value="{{registry_dataframe.iloc[0].Type}}" readonly />
+        <label for="value">Value</label>
+        <input type="text" style="margin-bottom: 1%;" placeholder="0" name="value"
+            value="{{registry_dataframe.iloc[0].Value}}" readonly />
+    </div>
+    <div id="options" style="margin-top:5% ; row-gap: 20px; align-content: space-around; margin-left:10%; display:flex;flex-direction: column; align-items: center;">
+        <button style="width: 90px; height: 70px;" class="button-audit">Audit</button>
+        <button style="width: 90px; height: 70px;" class="button-harden">Harden</button>
+    </div>
+</div>
+<div id="buttons">
+    <br>
+    <div x-data="{ switchOn: false }" class="flex items-center justify-center space-x-2">
+        <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn">
+        <button x-ref="switchButton" type="button" x-on:click="edit()" @click="switchOn = ! switchOn"
+            :class="switchOn ? 'bg-blue-600' : 'bg-neutral-200'"
+            class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10" x-cloak>
+            <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"
+                class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
+        </button>
+        <label @click="$refs.switchButton.click(); ;$refs.switchButton.focus()" :id="$id('switch')"
+            :class="{ 'text-blue-600': switchOn, 'text-gray-400': ! switchOn }" class="text-sm select-none" x-cloak>
+            Edit Mode
+        </label>
+    </div>
+</div>
+<div style="width: 10%;">
+    <span
+        class="bg-transparent text-blue-500 border border-neutral-300 flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full">
+        <span class="block w-1.5 h-1.5 -ml-0.5 mr-1 bg-blue-500 rounded-full"></span>
+        <span>Registry</span>
+    </span>
+</div>
