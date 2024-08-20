@@ -23,20 +23,21 @@
 <body>
   <h1>HARDENIZER</h1>
   <div class="appcontainer" id="appcontainer">
-    <div class="sidebar" id="sidebar" hx-get="/sidebar" hx-swap="outerHTML" hx-trigger="load"
+    <div class="sidebar" id="sidebar" hx-get="/sidebar" hx-swap="innerHTML" hx-trigger="load"
       hx-target="#sidebar-content">
-      <div id="header" style="display: flex; flex-direction: columns; ">
-        <select name="sidebar" hx-get="/sidebar" hx-swap="outerHTML" hx-target="#sidebar-content">
+      <div id="header" style="display: flex; flex-direction: columns; position:fixed;">
+        <select name="sidebar" hx-get="/sidebar" hx-swap="innerHTML" hx-target="#sidebar-content">
           <option selected value="registries">Registries</option>
           <option value="commands">Commands</option>
         </select>
       </div>
-      <div id="sidebar-content"></div>
+      <div id="sidebar-content" class="sidebar-content"></div>
     </div>
     <div class="main_content" id="main_content" hx-get="/main" hx-trigger="load" hx-swap="innerHTML">
     </div>
   </div>
-  <a hx-get="/about" hx-swap="innerHTML" hx-target="#main_content" hx-trigger="click" style="cursor: pointer;"><u>About</u></a>
+  <a hx-get="/about" hx-swap="innerHTML" hx-target="#main_content" hx-trigger="click"
+    style="cursor: pointer;"><u>About</u></a>
 </body>
 
 </html>

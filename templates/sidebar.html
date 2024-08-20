@@ -1,9 +1,5 @@
-<div id="sidebar-content">
-    {%for i, item in df.iterrows()%}
-    <a hx-get="{{path}}/{{item['id']}}" hx-target="#main_content" hx-swap="innerHTML" hx-trigger="click"
-        style="margin: 1%;cursor: pointer;">
-        {{item['Title']}}
-    </a>
-    <hr color="black">
-    {%endfor%}
-</div>
+{%for i, item in df.iterrows()%}
+<a hx-get="{{path}}/{{item['id']}}" hx-target="#main_content" hx-swap="innerHTML" hx-trigger="click"
+    class="sidebar-entry">{{item['Title']}}</a>
+<hr color="black">
+{%endfor%}
